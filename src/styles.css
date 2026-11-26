@@ -2239,3 +2239,26 @@ body {
     background: linear-gradient(180deg, rgba(4, 10, 32, 0.72) 0%, rgba(4, 10, 32, 0.45) 55%, rgba(4, 10, 32, 0) 100%);
   }
 }
+
+/* iPad: no pull-to-refresh or rubber-banding while someone spins the islands, and keep clear of the edges. */
+html,
+body {
+  overscroll-behavior: none;
+}
+.stage {
+  touch-action: none;
+}
+.stage button,
+.stage .switch-card,
+.panel,
+.info-sheet,
+.game-frame,
+.tour {
+  touch-action: manipulation;
+}
+.stage > .brand {
+  top: max(1.2rem, env(safe-area-inset-top));
+}
+.stage-nav {
+  top: max(1.05rem, env(safe-area-inset-top));
+}

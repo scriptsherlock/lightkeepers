@@ -5,8 +5,9 @@ import { CHAPTERS, type Chapter } from '../content/chapters';
 
 export type Links = Record<string, { href: string; local: boolean }>;
 
+// Every level is open when a game is played from this site (the demo), not when played directly.
 const online = (): Links =>
-  Object.fromEntries(CHAPTERS.filter((c) => c.url).map((c) => [c.id, { href: c.url!, local: false }]));
+  Object.fromEntries(CHAPTERS.filter((c) => c.url).map((c) => [c.id, { href: c.url! + (c.unlock ?? ''), local: false }]));
 
 async function hasLocal(c: Chapter): Promise<boolean> {
   if (!c.localPath) return false;
@@ -27,7 +28,7 @@ export function useGameLinks(): Links {
     Promise.all(CHAPTERS.map(async (c) => [c, await hasLocal(c)] as const)).then((found) => {
       if (!alive) return;
       const next = online();
-      for (const [c, ok] of found) if (ok) next[c.id] = { href: c.localPath!, local: true };
+      for (const [c, ok] of found) if (ok) next[c.id] = { href: c.localPath! + (c.unlock ?? ''), local: true };
       setLinks(next);
     });
     return () => {

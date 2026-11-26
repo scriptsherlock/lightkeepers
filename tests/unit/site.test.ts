@@ -73,6 +73,9 @@ describe('chapters', () => {
       if (c.clip) expect(existsSync(`public/${c.clip}`), c.clip).toBe(true);
     }
   });
+  it('open every level in every playable game for the demo', () => {
+    for (const c of CHAPTERS.filter((x) => x.url)) expect(c.unlock, c.id).toMatch(/^#(unlock|teacher)$/);
+  });
   it('label anything unfinished honestly', () => {
     for (const c of CHAPTERS.filter((x) => x.status !== 'live')) expect(c.honesty).toBeTruthy();
   });

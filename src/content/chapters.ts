@@ -18,6 +18,8 @@ export interface Chapter {
   groups: ('young' | 'older')[];
   status: Status;
   url?: string; // live site
+  /** Added to the game's address from this site, so every level is open for the demo. */
+  unlock?: string;
   localPath?: string; // inside public/games when bundled for offline booths
   preview?: string;
   clip?: string; // a short recorded gameplay clip (public/clips), muted
@@ -65,6 +67,7 @@ export const CHAPTERS: Chapter[] = [
     groups: ['young'],
     status: 'live',
     url: 'https://scriptsherlock.github.io/sidekick-academy/',
+    unlock: '#unlock',
     localPath: 'games/sidekick-academy/index.html',
     preview: 'previews/sidekick.jpg',
     clip: 'clips/sidekick.webm',
@@ -124,6 +127,7 @@ export const CHAPTERS: Chapter[] = [
     groups: ['young', 'older'],
     status: 'live',
     url: 'https://scriptsherlock.github.io/order-up/',
+    unlock: '#unlock',
     localPath: 'games/order-up/index.html',
     preview: 'previews/order-up.jpg',
     clip: 'clips/order-up.webm',
@@ -155,6 +159,7 @@ export const CHAPTERS: Chapter[] = [
     groups: ['young', 'older'],
     status: 'live',
     url: 'https://scriptsherlock.github.io/treequest/game.html',
+    unlock: '#teacher',
     localPath: 'games/treequest/game.html',
     preview: 'previews/treequest.jpg',
     clip: 'clips/treequest.webm',
@@ -186,6 +191,7 @@ export const CHAPTERS: Chapter[] = [
     groups: ['older'],
     status: 'live',
     url: 'https://scriptsherlock.github.io/relight/',
+    unlock: '#unlock',
     localPath: 'games/relight/index.html',
     preview: 'previews/relight.jpg',
     clip: 'clips/relight.webm',
@@ -217,6 +223,7 @@ export const CHAPTERS: Chapter[] = [
     groups: ['older'],
     status: 'live',
     url: 'https://scriptsherlock.github.io/countersign/',
+    unlock: '#unlock',
     localPath: 'games/countersign/index.html',
     preview: 'previews/countersign.jpg',
     clip: 'clips/countersign.webm',
@@ -249,6 +256,7 @@ export const CHAPTERS: Chapter[] = [
     groups: [],
     status: 'in-development',
     url: 'https://scriptsherlock.github.io/countersign-the-line/',
+    unlock: '#unlock',
     localPath: 'games/countersign-the-line/index.html',
     preview: 'previews/the-line.jpg',
     clip: 'clips/the-line.webm',
