@@ -21,6 +21,8 @@ async function hasLocal(c: Chapter): Promise<boolean> {
 export function useGameLinks(): Links {
   const [links, setLinks] = useState<Links>(online);
   useEffect(() => {
+    // Bundled copies only exist on the booth laptop, so the live site doesn't look for them.
+    if (!/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return;
     let alive = true;
     Promise.all(CHAPTERS.map(async (c) => [c, await hasLocal(c)] as const)).then((found) => {
       if (!alive) return;
